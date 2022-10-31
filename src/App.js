@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Client, Lobby } from "boardgame.io/react";
+import { Local, SocketIO } from "boardgame.io/multiplayer";
+import TicTacTocBoard from "./Board";
+import { TicTacToe } from "./Game";
 
-function App() {
+/// Local
+// const TicTacToeClient = Client({
+//   game: TicTacToe,
+//   board: TicTacTocBoard,
+//   multiplayer: Local({
+//     persist: true,
+
+//     storageKey: 'bgio'
+//   }),
+// });
+
+/// Remote
+const TicTacToeClient = Client({
+  game: TicTacToe,
+  debug: true,
+  board: TicTacTocBoard,
+  multiplayer: SocketIO({ server: "localhost:8000" }),
+});
+
+const App = () => {
+  const [playerID, setPlayerID] = useState(null);
+  const [matchID, setMatchID] = useState("default");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {playerID === null ? (
+        <div>
+          <input type="text" value={matchID} onChange={(e) => {setMatchID(e.target.value)} } />
+          <p>Play as</p>
+          <button onClick={() => setPlayerID("0")}>Player 1</button>
+          <button onClick={() => setPlayerID("1")}>Player 2</button>
+        </div>
+      ) : (
+        <div>
+          <TicTacToeClient playerID={playerID} matchID={matchID} />
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default App;
