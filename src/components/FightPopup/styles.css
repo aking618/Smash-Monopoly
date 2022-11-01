@@ -1,0 +1,44 @@
+.popup-container {
+  position: absolute;
+  z-index: 9999;
+  left: 35%;
+  top: 35%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px 30px;
+  border: 1px solid black;
+}
+
+.fighter-options {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.fighter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.fighter-btn {
+  pointer-events: painted;
+  background-color: hsl(7, 81%, 63%);
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  padding: 14px;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
+  transition: 0.25s ease-in-out;
+}
+
+.fighter-btn:hover {
+  background-color: hsl(7, 81%, 83%);
+}

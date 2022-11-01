@@ -1,4 +1,5 @@
 import { INVALID_MOVE } from "boardgame.io/core";
+import { boardInfo } from "./models/boardInfo";
 
 export const TicTacToe = {
   name: "tic-tac-toe",
@@ -8,56 +9,60 @@ export const TicTacToe = {
     player1Cells: [],
     player2Pos: 0,
     player2Cells: [],
-    turn: 0,
+    showPopup: false,
   }),
 
   turn: {
     minMoves: 1,
-    maxMoves: 1,
+    maxMoves: 2,
   },
+  moves: {
+    roll: ({ G, ctx, events, random }) => {
+      let roll = random.D12();
 
-  phases: {
-    roll: {
-      moves: {
-        roll: ({ G, ctx, events, random }) => {
-          let roll = random.D12();
+      switch (ctx.currentPlayer) {
+        case "0":
+          G.player1Pos += roll;
 
-          switch (ctx.currentPlayer) {
-            case "0":
-              G.player1Pos += roll;
-
-              if (G.player1Pos >= G.cells.length) {
-                G.player1Pos -= G.cells.length;
-              }
-              break;
-            case "1":
-              G.player2Pos += roll;
-
-              if (G.player2Pos >= G.cells.length) {
-                G.player2Pos -= G.cells.length;
-              }
-
-              events.endPhase();
-              break;
-            default:
-              break;
+          if (G.player1Pos >= G.cells.length) {
+            G.player1Pos -= G.cells.length;
           }
-        },
-      },
-      start: true,
-      next: ({ G })  => {
-          console.log("here")
-        return G.turn % 2 === 0 ? "play" : "role";
-      },
-    },
 
-    play: {
-      moves: {
-        pickWinner: ({ G, ctx }) => {
-            // pass winner into here
-        },
-      },
-      next: "roll"
+          break;
+        case "1":
+          G.player2Pos += roll;
+
+          if (G.player2Pos >= G.cells.length) {
+            G.player2Pos -= G.cells.length;
+          }
+
+          G.showPopup = true;
+          break;
+        default:
+          break;
+      }
+
+      events.endTurn();
+    },
+    pickWinner: ({ G, ctx, events }, playerID) => {
+      // pass winner into here
+      if (playerID === "0") {
+        G.cells[
+          boardInfo
+            .filter((n) => n)
+            .find((tile) => tile.pos === G.player1Pos).pos
+        ] = playerID;
+      }
+
+      if (playerID === "1") {
+        G.cells[
+          boardInfo
+            .filter((n) => n)
+            .find((tile) => tile.pos === G.player2Pos).pos
+        ] = playerID;
+      }
+
+      G.showPopup = false;
     },
   },
 
