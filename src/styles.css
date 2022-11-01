@@ -14,7 +14,7 @@
   align-items: center;
   border: 1px solid black;
   overflow: hidden;
-  font-size: .7rem;
+  font-size: 0.7rem;
   text-align: center;
   pointer-events: none;
 }
@@ -87,26 +87,32 @@
 }
 
 .marker-container {
-    position: absolute;
-    display: flex;
+  position: absolute;
+  display: flex;
 }
 
 .player-marker {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    margin: 1px;
-    display: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 1px;
+  display: none;
 }
 
 .p1-marker {
-    display: block;
-    background-color: darksalmon;
-
+  display: block;
+  background-color: hsl(15, 72%, 70%);
 }
 
 .p2-marker {
-    display: block;
-    background-color: navy;
+  display: block;
+  background-color: hsl(240, 100%, 25%);
+}
 
+.p1-owned {
+  background-color:  hsl(15, 72%, 90%);
+}
+
+.p2-owned {
+  background-color: hsl(240, 100%, 90%);
 }

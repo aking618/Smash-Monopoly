@@ -18,6 +18,9 @@ const TicTacTocBoard = ({ ctx, G, moves, reset }) => {
       );
   }
 
+  G.turn = ctx.turn
+  console.log(G.turn);
+
   return (
     <div>
       <div>{`Current Player: ${currentPlayer}`}</div>

@@ -9,9 +9,27 @@ const Tile = ({
   image,
   player1Pos,
   player2Pos,
+  ownedBy = "",
 }) => {
+  let ownedColor = () => {
+    if (ownedBy === "") {
+      return "";
+    }
+
+    if (ownedBy === "0") {
+      return "p1-owned";
+    }
+
+    if (ownedBy === "1") {
+      return "p2-owned";
+    }
+  };
   return (
-    <div className={`tile ${left ? "left" : ""} ${right ? "right" : ""}`}>
+    <div
+      className={`tile ${left ? "left" : ""} ${
+        right ? "right" : ""
+      } ${ownedColor()}`}
+    >
       {strip && (
         <div
           className={`strip strip-${stripColor} ${
