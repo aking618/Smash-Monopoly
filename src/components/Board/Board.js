@@ -3,11 +3,14 @@ import "./styles.css";
 import Tile from "../Tile/Tile";
 import { boardInfo } from "../../models/boardInfo";
 import FightPopup from "../FightPopup/FightPopup";
+import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 
 const TicTacTocBoard = ({ ctx, G, moves }) => {
   const onClick = () => moves.roll();
 
   const handleWinner = (playerID) => moves.pickWinner(playerID);
+
+  const handleStealCharacter = (pos) => moves.stealCharacter(pos);
 
   let { currentPlayer } = ctx;
 
@@ -27,7 +30,7 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
       <button disabled={G.showPopup} onClick={() => onClick()}>
         ROLL
       </button>
-      {G.showPopup && (
+      {G.showFightPopup && (
         <FightPopup
           p1Fighter={boardInfo
             .filter((n) => n)
@@ -37,6 +40,15 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
             .find((tile) => tile.pos === G.player2Pos)}
           handleWinner={(playerId) => {
             handleWinner(playerId);
+          }}
+        />
+      )}
+      {G.showStealPopup && (
+        <StealCharacterPopup
+          G={G}
+          matchWinner={G.matchWinner}
+          handleStealCharacter={(pos) => {
+            handleStealCharacter(pos);
           }}
         />
       )}

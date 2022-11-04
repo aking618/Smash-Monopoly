@@ -9,12 +9,14 @@ export const TicTacToe = {
     player1Cells: [],
     player2Pos: 0,
     player2Cells: [],
-    showPopup: false,
+    showFightPopup: false,
+    matchWinner: "",
+    showStealPopup: false,
   }),
 
   turn: {
     minMoves: 1,
-    maxMoves: 2,
+    maxMoves: 3,
   },
   moves: {
     roll: ({ G, ctx, events, random }) => {
@@ -36,7 +38,7 @@ export const TicTacToe = {
             G.player2Pos -= G.cells.length;
           }
 
-          G.showPopup = true;
+          G.showFightPopup = true;
           break;
         default:
           break;
@@ -47,22 +49,59 @@ export const TicTacToe = {
     pickWinner: ({ G, ctx, events }, playerID) => {
       // pass winner into here
       if (playerID === "0") {
-        G.cells[
-          boardInfo
-            .filter((n) => n)
-            .find((tile) => tile.pos === G.player1Pos).pos
-        ] = playerID;
+        switch (IsTileOwned(G.cells, G.player1Pos)) {
+          case "0":
+            break;
+          case "1":
+            break;
+          default:
+            G.cells[
+              boardInfo
+                .filter((n) => n)
+                .find((tile) => tile.pos === G.player1Pos).pos
+            ] = playerID;
+            break;
+        }
+
+        if (IsTileOwned(G.cells, G.player2Pos) === playerID) {
+          G.matchWinner = playerID;
+          G.showStealPopup = true;
+        }
       }
 
       if (playerID === "1") {
-        G.cells[
-          boardInfo
-            .filter((n) => n)
-            .find((tile) => tile.pos === G.player2Pos).pos
-        ] = playerID;
+        switch (IsTileOwned(G.cells, G.player2Pos)) {
+          case "0":
+            break;
+          case "1":
+            break;
+          default:
+            G.cells[
+              boardInfo
+                .filter((n) => n)
+                .find((tile) => tile.pos === G.player2Pos).pos
+            ] = playerID;
+            break;
+        }
+
+        if (IsTileOwned(G.cells, G.player1Pos) === playerID) {
+          G.matchWinner = playerID;
+          G.showStealPopup = true;
+        }
       }
 
-      G.showPopup = false;
+      G.showFightPopup = false;
+    },
+
+    stealCharacter: ({ G, ctx, events }, pos) => {
+      if (pos == -1) {
+        return;
+      }
+
+      G.cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos] =
+        G.matchWinner;
+      G.showStealPopup = false;
+      G.matchWinner = "";
     },
   },
 
@@ -114,4 +153,8 @@ function IsVictory(cells) {
 
 function IsDraw(cells) {
   return cells.filter((c) => c === null).length === 0;
+}
+
+function IsTileOwned(cells, pos) {
+  return cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos];
 }
