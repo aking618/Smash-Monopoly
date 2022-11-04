@@ -6,7 +6,6 @@ const Tile = ({
   right = false,
   stripColor,
   title,
-  image,
   player1Pos,
   player2Pos,
   ownedBy = "",
@@ -44,7 +43,12 @@ const Tile = ({
       >
         {title}
       </p>
-      <div className="tile-image">{image}</div>
+      <img
+        className={`tile-image  ${left ? "image-left" : ""} ${
+          right ? "image-right" : ""
+        }`}
+        src={`images/${title.replace(/[^A-Z0-9]+/gi, "").toLowerCase()}.png`}
+      />
       <div className="marker-container">
         <div className={`${player1Pos ? "p1-marker" : ""} player-marker`} />
         <div className={`${player2Pos ? "p2-marker" : ""} player-marker`} />

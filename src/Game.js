@@ -92,14 +92,16 @@ export const TicTacToe = {
 
 function IsVictory(cells) {
   const positions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+    [21, 23, 24], // red
+    [26, 27, 29], // yellow
+    [19, 18, 16], // orange
+    [32, 31, 34], // green
+    [14, 13, 11], // magenta
+    [39, 37], // blue
+    [6, 8, 9], // cyan
+    [1, 3], // brown
+    [28, 12], // pythra
+    [25, 15, 35, 5], // fire emblem stations
   ];
 
   const isRowComplete = (row) => {
