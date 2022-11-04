@@ -51,6 +51,7 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
               key={index}
               strip={tile.strip}
               stripColor={tile.stripColor}
+              top={tile.top}
               left={tile.left}
               right={tile.right}
               title={tile.title}

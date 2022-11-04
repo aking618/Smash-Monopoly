@@ -40,6 +40,10 @@
   margin-bottom: 10px;
 }
 
+.top {
+  rotate: 180deg;
+}
+
 .left {
   flex-direction: row-reverse;
 }

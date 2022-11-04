@@ -2,6 +2,7 @@ import "./styles.css";
 
 const Tile = ({
   strip = true,
+  top = false,
   left = false,
   right = false,
   stripColor,
@@ -25,8 +26,8 @@ const Tile = ({
   };
   return (
     <div
-      className={`tile ${left ? "left" : ""} ${
-        right ? "right" : ""
+      className={`tile ${left ? "left" : ""} ${right ? "right" : ""} ${
+        top ? "top" : ""
       } ${ownedColor()}`}
     >
       {strip && (
