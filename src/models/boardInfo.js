@@ -1,19 +1,68 @@
 export let boardInfo = [
-  { pos: 20, strip: false, title: "Free Character", image: "N?A" },
-
-  { pos: 21, stripColor: "red", title: "Mario", image: "N/A", top: true },
-
-  { pos: 22, strip: false, title: "Chance", image: "N/A", top: true },
-
-  { pos: 23, stripColor: "red", title: "Peach", image: "N/A", top: true },
-
-  { pos: 24, stripColor: "red", title: "Bowser", image: "N/A", top: true },
-
-  { pos: 25, strip: false, title: "Marth Station", image: "N/A", top: true },
-
-  { pos: 26, stripColor: "yellow", title: "Pikachu", image: "N/A", top: true },
+  {
+    canBuy: false,
+    pos: 20,
+    strip: false,
+    title: "Free Character",
+    image: "N?A",
+  },
 
   {
+    canBuy: true,
+    pos: 21,
+    stripColor: "red",
+    title: "Mario",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: false,
+    pos: 22,
+    strip: false,
+    title: "Chance",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: true,
+    pos: 23,
+    stripColor: "red",
+    title: "Peach",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: true,
+    pos: 24,
+    stripColor: "red",
+    title: "Bowser",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: true,
+    pos: 25,
+    strip: false,
+    title: "Marth Station",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: true,
+    pos: 26,
+    stripColor: "yellow",
+    title: "Pikachu",
+    image: "N/A",
+    top: true,
+  },
+
+  {
+    canBuy: true,
     pos: 27,
     stripColor: "yellow",
     title: "Jigglypuff",
@@ -21,9 +70,17 @@ export let boardInfo = [
     top: true,
   },
 
-  { pos: 28, strip: false, title: "Pyra", image: "N?A", top: true },
+  {
+    canBuy: true,
+    pos: 28,
+    strip: false,
+    title: "Pyra",
+    image: "N?A",
+    top: true,
+  },
 
   {
+    canBuy: true,
     pos: 29,
     stripColor: "yellow",
     title: "Pokemon Trainer",
@@ -31,9 +88,16 @@ export let boardInfo = [
     top: true,
   },
 
-  { pos: 30, strip: false, title: "You're Banned", image: "N/A" },
+  {
+    canBuy: false,
+    pos: 30,
+    strip: false,
+    title: "You're Banned",
+    image: "N/A",
+  },
 
   {
+    canBuy: true,
     pos: 19,
     stripColor: "orange",
     title: "King K. Rool",
@@ -42,9 +106,17 @@ export let boardInfo = [
   },
   null,
 
-  { pos: 31, stripColor: "green", title: "Link", image: "N/A", right: true },
+  {
+    canBuy: true,
+    pos: 31,
+    stripColor: "green",
+    title: "Link",
+    image: "N/A",
+    right: true,
+  },
 
   {
+    canBuy: true,
     pos: 18,
     stripColor: "orange",
     title: "Diddy Kong",
@@ -53,12 +125,27 @@ export let boardInfo = [
   },
   null,
 
-  { pos: 32, stripColor: "green", title: "Zelda", image: "N/A", right: true },
+  {
+    canBuy: true,
+    pos: 32,
+    stripColor: "green",
+    title: "Zelda",
+    image: "N/A",
+    right: true,
+  },
 
-  { pos: 17, strip: false, title: "Community Chest", image: "N/A", left: true },
+  {
+    canBuy: false,
+    pos: 17,
+    strip: false,
+    title: "Community Chest",
+    image: "N/A",
+    left: true,
+  },
   null,
 
   {
+    canBuy: false,
     pos: 33,
     strip: false,
     title: "Community Chest",
@@ -67,6 +154,7 @@ export let boardInfo = [
   },
 
   {
+    canBuy: true,
     pos: 16,
     stripColor: "orange",
     title: "Donkey Kong",
@@ -76,6 +164,7 @@ export let boardInfo = [
   null,
 
   {
+    canBuy: true,
     pos: 34,
     stripColor: "green",
     title: "Ganondorf",
@@ -83,12 +172,27 @@ export let boardInfo = [
     right: true,
   },
 
-  { pos: 15, strip: false, title: "Chrom Station", image: "N/A", left: true },
+  {
+    canBuy: true,
+    pos: 15,
+    strip: false,
+    title: "Chrom Station",
+    image: "N/A",
+    left: true,
+  },
   null,
 
-  { pos: 35, strip: false, title: "Roy Station", image: "N/A", right: true },
+  {
+    canBuy: true,
+    pos: 35,
+    strip: false,
+    title: "Roy Station",
+    image: "N/A",
+    right: true,
+  },
 
   {
+    canBuy: true,
     pos: 14,
     stripColor: "magenta",
     title: "King Dedede",
@@ -96,9 +200,17 @@ export let boardInfo = [
     left: true,
   },
   null,
-  { pos: 36, strip: false, title: "Chance", image: "N/A", right: true },
+  {
+    canBuy: false,
+    pos: 36,
+    strip: false,
+    title: "Chance",
+    image: "N/A",
+    right: true,
+  },
 
   {
+    canBuy: true,
     pos: 13,
     stripColor: "magenta",
     title: "Meta Knight",
@@ -106,15 +218,44 @@ export let boardInfo = [
     left: true,
   },
   null,
-  { pos: 37, stripColor: "blue", title: "Cloud", image: "N/A", right: true },
+  {
+    canBuy: true,
+    pos: 37,
+    stripColor: "blue",
+    title: "Cloud",
+    image: "N/A",
+    right: true,
+  },
 
-  { pos: 12, strip: false, title: "Mythra", image: "N/A", left: true },
-  null,
-  { pos: 38, strip: false, title: "Super Tax", image: "N/A", right: true },
-
-  { pos: 11, stripColor: "magenta", title: "Kirby", image: "N/A", left: true },
+  {
+    canBuy: true,
+    pos: 12,
+    strip: false,
+    title: "Mythra",
+    image: "N/A",
+    left: true,
+  },
   null,
   {
+    canBuy: true,
+    pos: 38,
+    strip: false,
+    title: "Super Tax",
+    image: "N/A",
+    right: true,
+  },
+
+  {
+    canBuy: true,
+    pos: 11,
+    stripColor: "magenta",
+    title: "Kirby",
+    image: "N/A",
+    left: true,
+  },
+  null,
+  {
+    canBuy: true,
     pos: 39,
     stripColor: "blue",
     title: "Sephiroth",
@@ -122,26 +263,44 @@ export let boardInfo = [
     right: true,
   },
 
-  { pos: 10, strip: false, title: "Just Visiting", image: "N/A" },
+  {
+    canBuy: false,
+    pos: 10,
+    strip: false,
+    title: "Just Visiting",
+    image: "N/A",
+  },
 
-  { pos: 9, stripColor: "cyan", title: "Fox", image: "N/A" },
+  { canBuy: true, pos: 9, stripColor: "cyan", title: "Fox", image: "N/A" },
 
-  { pos: 8, stripColor: "cyan", title: "Falco", image: "N/A" },
+  { canBuy: true, pos: 8, stripColor: "cyan", title: "Falco", image: "N/A" },
 
-  { pos: 7, strip: false, title: "Chance", image: "N/A" },
+  { canBuy: true, pos: 7, strip: false, title: "Chance", image: "N/A" },
 
-  { pos: 6, stripColor: "cyan", title: "Wolf", image: "N/A" },
+  { canBuy: true, pos: 6, stripColor: "cyan", title: "Wolf", image: "N/A" },
 
-  { pos: 5, strip: false, title: "Lucina Station", image: "N/A" },
+  { canBuy: true, pos: 5, strip: false, title: "Lucina Station", image: "N/A" },
 
-  { pos: 4, strip: false, title: "Income Tax", image: "N/A" },
+  { canBuy: true, pos: 4, strip: false, title: "Income Tax", image: "N/A" },
 
-  { pos: 3, stripColor: "brown", title: "Ryu", image: "N/A" },
+  { canBuy: true, pos: 3, stripColor: "brown", title: "Ryu", image: "N/A" },
 
-  { pos: 2, strip: false, title: "Community Chest", image: "N/A" },
+  {
+    canBuy: false,
+    pos: 2,
+    strip: false,
+    title: "Community Chest",
+    image: "N/A",
+  },
 
   ,
-  { pos: 1, stripColor: "brown", title: "Ken", image: "N/A" },
+  { canBuy: true, pos: 1, stripColor: "brown", title: "Ken", image: "N/A" },
 
-  { pos: 0, strip: false, title: "Collect and Go", image: "N/A" },
+  {
+    canBuy: false,
+    pos: 0,
+    strip: false,
+    title: "Collect and Go",
+    image: "N/A",
+  },
 ];

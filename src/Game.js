@@ -55,11 +55,13 @@ export const TicTacToe = {
           case "1":
             break;
           default:
-            G.cells[
-              boardInfo
-                .filter((n) => n)
-                .find((tile) => tile.pos === G.player1Pos).pos
-            ] = playerID;
+            if (IsTilePurchasable(G.cells, G.player1Pos)) {
+              G.cells[
+                boardInfo
+                  .filter((n) => n)
+                  .find((tile) => tile.pos === G.player1Pos).pos
+              ] = playerID;
+            }
             break;
         }
 
@@ -76,11 +78,13 @@ export const TicTacToe = {
           case "1":
             break;
           default:
-            G.cells[
-              boardInfo
-                .filter((n) => n)
-                .find((tile) => tile.pos === G.player2Pos).pos
-            ] = playerID;
+            if (IsTilePurchasable(G.cells, G.player2Pos)) {
+              G.cells[
+                boardInfo
+                  .filter((n) => n)
+                  .find((tile) => tile.pos === G.player2Pos).pos
+              ] = playerID;
+            }
             break;
         }
 
@@ -157,4 +161,8 @@ function IsDraw(cells) {
 
 function IsTileOwned(cells, pos) {
   return cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos];
+}
+
+function IsTilePurchasable(cells, pos) {
+  return boardInfo.filter((n) => n).find((tile) => tile.pos === pos).canBuy;
 }
