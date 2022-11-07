@@ -3,6 +3,7 @@ import { Client, Lobby } from "boardgame.io/react";
 import { Local, SocketIO } from "boardgame.io/multiplayer";
 import TicTacTocBoard from "./components/Board/Board";
 import { TicTacToe } from "./Game";
+import Home from "./components/Home/Home";
 
 /// Local
 // const TicTacToeClient = Client({
@@ -30,18 +31,11 @@ const App = () => {
   return (
     <div>
       {playerID === null ? (
-        <div>
-          <input
-            type="text"
-            value={matchID}
-            onChange={(e) => {
-              setMatchID(e.target.value);
-            }}
+        <Home
+          matchID={matchID}
+          setMatchID={setMatchID}
+          updatePlayerId={(e) => setPlayerID(e)}
           />
-          <p>Play as</p>
-          <button onClick={() => setPlayerID("0")}>Player 1</button>
-          <button onClick={() => setPlayerID("1")}>Player 2</button>
-        </div>
       ) : (
         <div>
           <TicTacToeClient playerID={playerID} matchID={matchID} />

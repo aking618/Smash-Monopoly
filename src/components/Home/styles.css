@@ -1,0 +1,115 @@
+:root {
+  --input-color: #474747;
+  --input-border: #cdd9ed;
+  --input-background: #fff;
+  --input-placeholder: #cbd1dc;
+
+  --input-border-focus: #275efe;
+
+  --group-color: var(--input-color);
+  --group-border: var(--input-border);
+  --group-background: #eef4ff;
+
+  --group-color-focus: #fff;
+  --group-border-focus: var(--input-border-focus);
+  --group-background-focus: #678efe;
+}
+
+.home-container {
+  width: 50%;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.35);
+}
+
+.choose-match-wrapper {
+  font-size: 18px;
+  text-align: center;
+}
+
+.matchId-input-group {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.matchId-input-group:focus-within > span {
+  color: var(--group-color-focus);
+  background: var(--group-background-focus);
+  border-color: var(--group-border-focus);
+}
+
+.matchId-input-group > span {
+  text-align: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 25px;
+  color: var(--group-color);
+  background: var(--group-background);
+  border: 1px solid var(--group-border);
+  transition: 0.3s ease;
+}
+
+.matchId-input-group > span,
+.form-field {
+  white-space: nowrap;
+  display: block;
+}
+
+.matchId-input-field {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  line-height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  color: var(--input-color);
+  border: 1px solid var(--input-border);
+  background: var(--input-background);
+  transition: border 0.3s ease;
+  border-radius: 0 6px 6px 0;
+
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.matchId-input-field:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+}
+
+.choose-player-wrapper {
+  font-size: 18px;
+  text-align: center;
+
+  display: block;
+}
+
+.choose-player-btn {
+  padding: 0.75rem 1rem;
+  margin: 1rem;
+
+  color: var(--group-color-focus);
+  background: var(--group-background-focus);
+  border: none;
+  border-radius: 5px;
+  transition: .25 ease-in-out;
+}
+
+.choose-player-btn:hover {
+    background-color: var(--group-background);
+    color: black;
+}
