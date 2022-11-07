@@ -24,13 +24,13 @@ const Home = ({ matchID, setMatchID, updatePlayerId }) => {
         <p className="choose-player-title">Choose who to enter the match as:</p>
         <button
           className="choose-player-btn"
-          bonClick={() => updatePlayerId("0")}
+          onClick={() => updatePlayerId("0")}
         >
           Player 1
         </button>
         <button
           className="choose-player-btn"
-          bonClick={() => updatePlayerId("1")}
+          onClick={() => updatePlayerId("1")}
         >
           Player 2
         </button>

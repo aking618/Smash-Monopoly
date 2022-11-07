@@ -26,6 +26,8 @@
   align-items: center;
   background-color: #fff;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.35);
+  margin: 0 auto;
+  margin-top: 5rem;
 }
 
 .choose-match-wrapper {

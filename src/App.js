@@ -29,7 +29,7 @@ const App = () => {
   const [matchID, setMatchID] = useState("default");
 
   return (
-    <div>
+    <>
       {playerID === null ? (
         <Home
           matchID={matchID}
@@ -41,7 +41,7 @@ const App = () => {
           <TicTacToeClient playerID={playerID} matchID={matchID} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
