@@ -7,9 +7,9 @@ import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 import PlayerControls from "../PlayerControls/PlayerControls";
 
 const TicTacTocBoard = ({ ctx, G, moves }) => {
-
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
   const handleWinner = (playerID) => moves.pickWinner(playerID);
+  const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
 
   let winner = "";
   if (ctx.gameover) {
@@ -36,13 +36,18 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
-      <PlayerControls
-       G={G}
-       ctx={ctx}
-       moves={moves}
-       />
-      
+      <PlayerControls G={G} ctx={ctx} moves={moves} />
+
       {G.showStealPopup && (
+        <StealCharacterPopup
+          G={G}
+          matchWinner={G.matchWinner}
+          handleStealCharacter={(pos) => {
+            handleStealCharacter(pos);
+          }}
+        />
+      )}
+      {(G.showSelectFreeCharacterPopup || true) && (
         <StealCharacterPopup
           G={G}
           matchWinner={G.matchWinner}

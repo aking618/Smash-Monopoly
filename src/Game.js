@@ -12,6 +12,7 @@ export const TicTacToe = {
     showFightPopup: false,
     matchWinner: "",
     showStealPopup: false,
+    showSelectFreeCharacterPopup: false,
   }),
 
   turn: {
@@ -28,6 +29,8 @@ export const TicTacToe = {
 
           if (G.player1Pos >= G.cells.length) {
             G.player1Pos -= G.cells.length;
+
+            G.showSelectFreeCharacterPopup = true;
           }
 
           break;
@@ -36,8 +39,11 @@ export const TicTacToe = {
 
           if (G.player2Pos >= G.cells.length) {
             G.player2Pos -= G.cells.length;
+
+            G.showSelectFreeCharacterPopup = true;
           }
 
+          // to be adjusted if other action is needed before hand
           G.showFightPopup = true;
           break;
         default:
@@ -99,6 +105,8 @@ export const TicTacToe = {
 
     stealCharacter: ({ G, ctx, events }, pos) => {
       if (pos == -1) {
+        G.showStealPopup = false;
+        G.matchWinner = "";
         return;
       }
 
@@ -106,6 +114,16 @@ export const TicTacToe = {
         G.matchWinner;
       G.showStealPopup = false;
       G.matchWinner = "";
+    },
+
+    pickFreeCharacter: ({ G, ctx }, pos) => {
+      if (pos == -1) {
+        G.showSelectFreeCharacterPopup = false;
+      }
+
+      G.cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos] =
+        ctx.currentPlayer;
+      G.showSelectFreeCharacterPopup = false;
     },
   },
 
