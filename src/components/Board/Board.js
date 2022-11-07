@@ -5,6 +5,7 @@ import { boardInfo } from "../../models/boardInfo";
 import FightPopup from "../FightPopup/FightPopup";
 import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 import PlayerControls from "../PlayerControls/PlayerControls";
+import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 
 const TicTacTocBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
@@ -48,11 +49,11 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
         />
       )}
       {(G.showSelectFreeCharacterPopup || true) && (
-        <StealCharacterPopup
+        <FreeCharacterPopup
           G={G}
-          matchWinner={G.matchWinner}
-          handleStealCharacter={(pos) => {
-            handleStealCharacter(pos);
+          ctx={ctx}
+          handleResult={(pos) => {
+            handlePickFreeCharacter(pos);
           }}
         />
       )}
