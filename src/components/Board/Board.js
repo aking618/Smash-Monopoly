@@ -48,7 +48,7 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
-      {(G.showSelectFreeCharacterPopup || true) && (
+      {G.showSelectFreeCharacterPopup && (
         <FreeCharacterPopup
           G={G}
           ctx={ctx}

@@ -50,7 +50,9 @@ export const TicTacToe = {
           break;
       }
 
-      events.endTurn();
+      if (!G.showSelectFreeCharacterPopup) {
+        events.endTurn();
+      }
     },
     pickWinner: ({ G, ctx, events }, playerID) => {
       // pass winner into here
@@ -116,7 +118,7 @@ export const TicTacToe = {
       G.matchWinner = "";
     },
 
-    pickFreeCharacter: ({ G, ctx }, pos) => {
+    pickFreeCharacter: ({ G, ctx, events }, pos) => {
       if (pos == -1) {
         G.showSelectFreeCharacterPopup = false;
       }
@@ -124,6 +126,8 @@ export const TicTacToe = {
       G.cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos] =
         ctx.currentPlayer;
       G.showSelectFreeCharacterPopup = false;
+
+      events.endTurn();
     },
   },
 
