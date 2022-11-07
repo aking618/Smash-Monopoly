@@ -4,15 +4,12 @@ import Tile from "../Tile/Tile";
 import { boardInfo } from "../../models/boardInfo";
 import FightPopup from "../FightPopup/FightPopup";
 import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
+import PlayerControls from "../PlayerControls/PlayerControls";
 
 const TicTacTocBoard = ({ ctx, G, moves }) => {
-  const onClick = () => moves.roll();
-
-  const handleWinner = (playerID) => moves.pickWinner(playerID);
 
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
-
-  let { currentPlayer } = ctx;
+  const handleWinner = (playerID) => moves.pickWinner(playerID);
 
   let winner = "";
   if (ctx.gameover) {
@@ -26,10 +23,11 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
 
   return (
     <div>
-      <div>{`Current Player: ${currentPlayer}`}</div>
-      <button disabled={G.showPopup} onClick={() => onClick()}>
-        ROLL
-      </button>
+      <PlayerControls
+       G={G}
+       ctx={ctx}
+       moves={moves}
+       />
       {G.showFightPopup && (
         <FightPopup
           p1Fighter={boardInfo
