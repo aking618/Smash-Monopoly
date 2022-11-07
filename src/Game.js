@@ -33,6 +33,10 @@ export const TicTacToe = {
             G.showSelectFreeCharacterPopup = true;
           }
 
+          if (IsTileFreeCharacterSpace(G.player1Pos)) {
+            G.showSelectFreeCharacterPopup = true;
+          }
+
           break;
         case "1":
           G.player2Pos += roll;
@@ -40,6 +44,10 @@ export const TicTacToe = {
           if (G.player2Pos >= G.cells.length) {
             G.player2Pos -= G.cells.length;
 
+            G.showSelectFreeCharacterPopup = true;
+          }
+
+          if (IsTileFreeCharacterSpace(G.player2Pos)) {
             G.showSelectFreeCharacterPopup = true;
           }
 
@@ -187,4 +195,8 @@ function IsTileOwned(cells, pos) {
 
 function IsTilePurchasable(cells, pos) {
   return boardInfo.filter((n) => n).find((tile) => tile.pos === pos).canBuy;
+}
+
+function IsTileFreeCharacterSpace(pos) {
+  return pos === 20;
 }
