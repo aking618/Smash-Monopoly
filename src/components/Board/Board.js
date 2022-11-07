@@ -6,21 +6,12 @@ import FightPopup from "../FightPopup/FightPopup";
 import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
+import WinnerPopup from "../WinnerPopup/WinnerPopup";
 
 const TicTacTocBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
   const handleWinner = (playerID) => moves.pickWinner(playerID);
   const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
-
-  let winner = "";
-  if (ctx.gameover) {
-    winner =
-      ctx.gameover.winner !== undefined ? (
-        <div id="winner">Winner: {ctx.gameover.winner}</div>
-      ) : (
-        <div id="winner">Draw!</div>
-      );
-  }
 
   return (
     <div className="container">
@@ -57,6 +48,7 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
+      {ctx.gameover && <WinnerPopup ctx={ctx} />}
       <div className="boardContainer">
         {boardInfo.map((tile, index) => {
           if (tile === null) {
