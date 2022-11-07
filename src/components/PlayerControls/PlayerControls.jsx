@@ -6,10 +6,10 @@ const PlayerControls = ({ G, ctx, moves }) => {
 
   return (
     <div className="player-control-wrapper">
-      <div>{`Current Player: ${ctx.currentPlayer}`}</div>
+      <p className="player-control-title">{`Current Player: ${ctx.currentPlayer}`}</p>
       <button
         className="choose-player-btn player-control-btn"
-        disabled={G.showPopup}
+        disabled={G.showFightPopup || G.showStealPopup}
         onClick={() => onClick()}
       >
         ROLL

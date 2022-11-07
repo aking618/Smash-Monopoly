@@ -22,12 +22,7 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
   }
 
   return (
-    <div>
-      <PlayerControls
-       G={G}
-       ctx={ctx}
-       moves={moves}
-       />
+    <div className="container">
       {G.showFightPopup && (
         <FightPopup
           p1Fighter={boardInfo
@@ -41,6 +36,12 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
+      <PlayerControls
+       G={G}
+       ctx={ctx}
+       moves={moves}
+       />
+      
       {G.showStealPopup && (
         <StealCharacterPopup
           G={G}
