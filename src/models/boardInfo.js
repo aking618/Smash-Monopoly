@@ -241,32 +241,36 @@ export let boardInfo = [
     title: "Just Visiting",
   },
 
-  { canBuy: true, pos: 9, stripColor: "cyan", title: "Fox" },
+  { canBuy: true, pos: 9, stripColor: "cyan", title: "Fox", },
 
-  { canBuy: true, pos: 8, stripColor: "cyan", title: "Falco" },
+  { canBuy: true, pos: 8, stripColor: "cyan", title: "Falco", },
 
-  { canBuy: true, pos: 7, strip: false, title: "Chance" },
+  { canBuy: true, pos: 7, strip: false, title: "Chance", },
 
-  { canBuy: true, pos: 6, stripColor: "cyan", title: "Wolf" },
+  { canBuy: true, pos: 6, stripColor: "cyan", title: "Wolf", },
 
-  { canBuy: true, pos: 5, strip: false, title: "Lucina Station" },
+  { canBuy: true, pos: 5, strip: false, title: "Lucina Station", },
 
-  { canBuy: true, pos: 4, strip: false, title: "Income Tax" },
+  { canBuy: true, pos: 4, strip: false, title: "Income Tax", },
 
-  { canBuy: true, pos: 3, stripColor: "brown", title: "Ryu" },
+  { canBuy: true, pos: 3, stripColor: "brown", title: "Ryu", },
 
   {
     canBuy: false,
     pos: 2,
     strip: false,
     title: "Community Chest",
+    image: "N/A",
   },
 
   ,
+  { canBuy: true, pos: 1, stripColor: "brown", title: "Ken", image: "N/A" },
+
   {
     canBuy: false,
     pos: 0,
     strip: false,
     title: "Collect and Go",
+    image: "N/A",
   },
 ];
