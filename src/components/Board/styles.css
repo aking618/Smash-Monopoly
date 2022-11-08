@@ -1,11 +1,18 @@
 .boardContainer {
-  padding: 2rem;
+  /* padding: 2rem; */
   display: grid;
   grid-template-columns: 100px repeat(9, 65px) 100px;
   grid-template-rows: 100px repeat(9, 65px) 100px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   justify-content: center;
+  background-color: blanchedalmond;
+  background-image: url(/public/images/Smash_Ball.png),
+    url(https://www.transparenttextures.com/patterns/wood.png);
+  background-size: 50%, 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: perspective(75em) rotateX(18deg) translateY(-50px);
 }
 
 .filler {
