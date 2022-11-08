@@ -5,7 +5,7 @@ const PlayerControls = ({ G, ctx, moves }) => {
   const onClick = () => moves.roll();
 
   return (
-    <div className="player-control-wrapper">
+    <div className="player-control-container">
       <p className="player-control-title">{`Current Player: ${ctx.currentPlayer}`}</p>
       <button
         className="choose-player-btn player-control-btn"
@@ -14,6 +14,7 @@ const PlayerControls = ({ G, ctx, moves }) => {
       >
         ROLL
       </button>
+      <div className="roll-value">{`Roll value: ${G.roll}`}</div>
     </div>
   );
 };

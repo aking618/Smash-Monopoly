@@ -9,6 +9,7 @@ export const TicTacToe = {
     player1Cells: [],
     player2Pos: 0,
     player2Cells: [],
+    roll: 0,
     showFightPopup: false,
     matchWinner: "",
     showStealPopup: false,
@@ -22,6 +23,7 @@ export const TicTacToe = {
   moves: {
     roll: ({ G, ctx, events, random }) => {
       let roll = random.D12();
+      G.roll = roll;
 
       switch (ctx.currentPlayer) {
         case "0":
