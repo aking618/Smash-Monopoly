@@ -241,6 +241,7 @@ export let boardInfo = [
     pos: 10,
     strip: false,
     title: "Just Visiting",
+    corner: true,
   },
 
   { canBuy: true, pos: 9, stripColor: "cyan", title: "Fox" },

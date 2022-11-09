@@ -3,6 +3,7 @@ import {
   IsTileFreeCharacterSpace,
   IsTileOwned,
   IsTilePurchasable,
+  IsTileGoToJail,
   IsDraw,
   IsVictory,
 } from "./utility";
@@ -25,18 +26,29 @@ export function rollAction({ G, ctx, events, random }) {
         G.showSelectFreeCharacterPopup = true;
       }
 
+      if (IsTileGoToJail(G.player1Pos)) {
+        G.player1Pos = 10;
+        G.banned = ctx.currentPlayer;
+        G.showBannedPopup = true;
+      }
+
       break;
     case "1":
       G.player2Pos += roll;
 
       if (G.player2Pos >= G.cells.length) {
         G.player2Pos -= G.cells.length;
-
         G.showSelectFreeCharacterPopup = true;
       }
 
       if (IsTileFreeCharacterSpace(G.player2Pos)) {
         G.showSelectFreeCharacterPopup = true;
+      }
+
+      if (IsTileGoToJail(G.player2Pos)) {
+        G.player2Pos = 10;
+        G.banned = ctx.currentPlayer;
+        G.showBannedPopup = true;
       }
 
       // to be adjusted if other action is needed before hand

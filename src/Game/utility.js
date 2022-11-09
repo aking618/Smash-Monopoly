@@ -37,3 +37,7 @@ export function IsTilePurchasable(cells, pos) {
 export function IsTileFreeCharacterSpace(pos) {
   return pos === 20;
 }
+
+export function IsTileGoToJail(pos) {
+  return pos === 30;
+}

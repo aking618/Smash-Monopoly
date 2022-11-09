@@ -19,6 +19,8 @@ const SmashMonopoly = {
     matchWinner: "",
     showStealPopup: false,
     showSelectFreeCharacterPopup: false,
+    banned: "",
+    showBannedPopup: false,
   }),
 
   turn: {

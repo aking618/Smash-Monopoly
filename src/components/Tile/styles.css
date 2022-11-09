@@ -140,7 +140,7 @@
 }
 
 .both-marker {
-  display: none;
+  display: block;
 }
 
 .p1-owned {
