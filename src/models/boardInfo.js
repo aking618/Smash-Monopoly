@@ -4,6 +4,7 @@ export let boardInfo = [
     pos: 20,
     strip: false,
     title: "Free Character",
+    corner: true,
   },
 
   {
@@ -83,6 +84,7 @@ export let boardInfo = [
     pos: 30,
     strip: false,
     title: "You're Banned",
+    corner: true,
   },
 
   {
@@ -269,5 +271,6 @@ export let boardInfo = [
     pos: 0,
     strip: false,
     title: "Collect and Go",
+    corner: true,
   },
 ];

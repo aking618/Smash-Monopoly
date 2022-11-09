@@ -64,6 +64,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
               left={tile.left}
               right={tile.right}
               title={tile.title}
+              corner={tile.corner}
               player1Pos={tile.pos === G.player1Pos}
               player2Pos={tile.pos === G.player2Pos}
               ownedBy={G.cells[tile.pos]}

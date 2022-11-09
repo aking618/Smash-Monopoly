@@ -43,6 +43,7 @@
 
 .top {
   rotate: 180deg;
+  overflow: visible;
 }
 
 .left {
@@ -106,24 +107,40 @@
 .marker-container {
   position: absolute;
   display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
 }
 
 .player-marker {
-  width: 1rem;
-  height: 1rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   margin: 1px;
+}
+
+.left-mark {
+  margin: 0;
+  rotate: 90deg;
+  margin-left: 10rem;
+}
+
+.right-mark {
+  margin: 0;
+  rotate: -90deg;
+  margin-right: 10rem;
+}
+
+.top-mark {
+  margin: 0;
+  margin-bottom: 10rem;
+}
+
+.corner-mark {
+  margin: 0;
+}
+
+.both-marker {
   display: none;
-}
-
-.p1-marker {
-  display: block;
-  background-color: hsl(15, 72%, 70%);
-}
-
-.p2-marker {
-  display: block;
-  background-color: hsl(240, 100%, 25%);
 }
 
 .p1-owned {

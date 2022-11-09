@@ -5,6 +5,7 @@ const Tile = ({
   top = false,
   left = false,
   right = false,
+  corner = false,
   stripColor,
   title,
   player1Pos,
@@ -51,9 +52,27 @@ const Tile = ({
         src={`images/${title.replace(/[^A-Z0-9]+/gi, "").toLowerCase()}.png`}
         alt={title}
       />
-      <div className="marker-container">
-        <div className={`${player1Pos ? "p1-marker" : ""} player-marker`} />
-        <div className={`${player2Pos ? "p2-marker" : ""} player-marker`} />
+      <div
+        className={`marker-container ${left ? "left-mark" : ""} ${
+          right ? "right-mark" : ""
+        } ${top ? "top-mark" : ""} ${
+          player1Pos && player2Pos ? "both-marker" : ""
+        } ${corner ? "corner-mark" : ""}`}
+      >
+        {player1Pos && (
+          <img
+            className="player-marker p1-marker"
+            src="images/player0.png"
+            alt="Player One"
+          />
+        )}
+        {player2Pos && (
+          <img
+            className="player-marker p2-marker"
+            src="images/player1.png"
+            alt="Player One"
+          />
+        )}
       </div>
     </div>
   );

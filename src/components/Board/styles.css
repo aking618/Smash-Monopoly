@@ -1,5 +1,4 @@
 .boardContainer {
-  /* padding: 2rem; */
   display: grid;
   grid-template-columns: 100px repeat(9, 65px) 100px;
   grid-template-rows: 100px repeat(9, 65px) 100px;
