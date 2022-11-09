@@ -260,17 +260,14 @@ export let boardInfo = [
     pos: 2,
     strip: false,
     title: "Community Chest",
-    image: "N/A",
   },
 
-  ,
-  { canBuy: true, pos: 1, stripColor: "brown", title: "Ken", image: "N/A" },
+  { canBuy: true, pos: 1, stripColor: "brown", title: "Ken" },
 
   {
     canBuy: false,
     pos: 0,
     strip: false,
     title: "Collect and Go",
-    image: "N/A",
   },
 ];

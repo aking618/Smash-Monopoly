@@ -3,6 +3,8 @@ import {
   IsTileFreeCharacterSpace,
   IsTileOwned,
   IsTilePurchasable,
+  IsDraw,
+  IsVictory,
 } from "./utility";
 
 export function rollAction({ G, ctx, events, random }) {
@@ -123,4 +125,15 @@ export function pickFreeCharacterAction({ G, ctx, events }, pos) {
   G.showSelectFreeCharacterPopup = false;
 
   events.endTurn();
+}
+
+export function endCondition({ G, ctx }) {
+  if (IsVictory(G.cells)) {
+    // return the true winner
+    return { winner: ctx.currentPlayer };
+  }
+
+  if (IsDraw(G.cells)) {
+    return { draw: true };
+  }
 }

@@ -7,19 +7,16 @@ const StealCharacterPopup = ({ G, matchWinner, handleStealCharacter }) => {
   const [tiles, setTiles] = useState([]);
 
   useEffect(() => {
-    setTiles(ownedTiles(matchWinner == "0" ? "1" : "0"));
-  }, []);
-
-  const ownedTiles = (id) => {
-    var tiles = [];
+    var ownedTiles = [];
+    var id = matchWinner === "0" ? "1" : "0";
     G.cells.forEach((cell, index) => {
       if (cell === id) {
-        tiles.push(index);
+        ownedTiles.push(index);
       }
     });
 
-    return tiles;
-  };
+    setTiles(ownedTiles);
+  }, [G.cells, matchWinner]);
 
   return (
     <div className="steal-popup-container">
@@ -29,7 +26,7 @@ const StealCharacterPopup = ({ G, matchWinner, handleStealCharacter }) => {
         {tiles.map((tileIndex, index) => {
           let character = boardInfo
             .filter((n) => n)
-            .find((n) => n.pos == tileIndex);
+            .find((n) => n.pos === tileIndex);
           return (
             <div
               className="tile-wrapper"
@@ -40,7 +37,6 @@ const StealCharacterPopup = ({ G, matchWinner, handleStealCharacter }) => {
                 strip={character.strip}
                 stripColor={character.stripColor}
                 title={character.title}
-                image={character.image}
               />
             </div>
           );

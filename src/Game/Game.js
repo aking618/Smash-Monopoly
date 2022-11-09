@@ -1,5 +1,10 @@
-import { pickWinnerAction, rollAction, stealCharacterAction } from "./moves";
-import { IsDraw, IsVictory } from "./utility";
+import {
+  pickFreeCharacterAction,
+  pickWinnerAction,
+  rollAction,
+  stealCharacterAction,
+  endCondition,
+} from "./moves";
 
 const SmashMonopoly = {
   name: "smash-monopoly",
@@ -24,18 +29,10 @@ const SmashMonopoly = {
     roll: rollAction,
     pickWinner: pickWinnerAction,
     stealCharacter: stealCharacterAction,
-    pickFreeCharacter: pickWinnerAction,
+    pickFreeCharacter: pickFreeCharacterAction,
   },
 
-  endIf: ({ G, ctx }) => {
-    if (IsVictory(G.cells)) {
-      return { winner: ctx.currentPlayer };
-    }
-
-    if (IsDraw(G.cells)) {
-      return { draw: true };
-    }
-  },
+  endIf: endCondition,
 };
 
 export default SmashMonopoly;

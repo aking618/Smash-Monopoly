@@ -7,24 +7,19 @@ const FreeCharacterPopup = ({ G, ctx, handleResult }) => {
   const [tiles, setTiles] = useState([]);
 
   useEffect(() => {
-    setTiles(ownedTiles("0"));
-  }, []);
+    var unownedTiles = [];
 
-  const ownedTiles = () => {
-    var tiles = [];
-
-    var canBuy = boardInfo.filter((n) => n).filter((tile) => tile.canBuy);
     G.cells.forEach((cell, index) => {
       if (
         cell === null &&
         boardInfo.filter((n) => n).find((tile) => tile.pos === index).canBuy
       ) {
-        tiles.push(index);
+        unownedTiles.push(index);
       }
     });
 
-    return tiles;
-  };
+    setTiles(unownedTiles);
+  }, [G.cells]);
 
   return (
     <div className="steal-popup-container free-character-container">
@@ -34,7 +29,7 @@ const FreeCharacterPopup = ({ G, ctx, handleResult }) => {
         {tiles.map((tileIndex, index) => {
           let character = boardInfo
             .filter((n) => n)
-            .find((n) => n.pos == tileIndex);
+            .find((n) => n.pos === tileIndex);
           return (
             <div
               className="tile-wrapper"
@@ -45,7 +40,6 @@ const FreeCharacterPopup = ({ G, ctx, handleResult }) => {
                 strip={character.strip}
                 stripColor={character.stripColor}
                 title={character.title}
-                image={character.image}
               />
             </div>
           );

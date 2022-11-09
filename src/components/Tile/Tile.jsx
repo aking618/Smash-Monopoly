@@ -49,6 +49,7 @@ const Tile = ({
           right ? "image-right" : ""
         }`}
         src={`images/${title.replace(/[^A-Z0-9]+/gi, "").toLowerCase()}.png`}
+        alt={title}
       />
       <div className="marker-container">
         <div className={`${player1Pos ? "p1-marker" : ""} player-marker`} />
