@@ -1,5 +1,5 @@
-import { INVALID_MOVE } from "boardgame.io/core";
-import { boardInfo } from "../models/boardInfo";
+import { pickWinnerAction, rollAction, stealCharacterAction } from "./moves";
+import { IsDraw, IsVictory } from "./utility";
 
 const SmashMonopoly = {
   name: "smash-monopoly",
@@ -21,124 +21,10 @@ const SmashMonopoly = {
     maxMoves: 3,
   },
   moves: {
-    roll: ({ G, ctx, events, random }) => {
-      let roll = random.D12();
-      G.roll = roll;
-
-      switch (ctx.currentPlayer) {
-        case "0":
-          G.player1Pos += roll;
-
-          if (G.player1Pos >= G.cells.length) {
-            G.player1Pos -= G.cells.length;
-
-            G.showSelectFreeCharacterPopup = true;
-          }
-
-          if (IsTileFreeCharacterSpace(G.player1Pos)) {
-            G.showSelectFreeCharacterPopup = true;
-          }
-
-          break;
-        case "1":
-          G.player2Pos += roll;
-
-          if (G.player2Pos >= G.cells.length) {
-            G.player2Pos -= G.cells.length;
-
-            G.showSelectFreeCharacterPopup = true;
-          }
-
-          if (IsTileFreeCharacterSpace(G.player2Pos)) {
-            G.showSelectFreeCharacterPopup = true;
-          }
-
-          // to be adjusted if other action is needed before hand
-          G.showFightPopup = true;
-          break;
-        default:
-          break;
-      }
-
-      if (!G.showSelectFreeCharacterPopup) {
-        events.endTurn();
-      }
-    },
-    pickWinner: ({ G, ctx, events }, playerID) => {
-      // pass winner into here
-      if (playerID === "0") {
-        switch (IsTileOwned(G.cells, G.player1Pos)) {
-          case "0":
-            break;
-          case "1":
-            break;
-          default:
-            if (IsTilePurchasable(G.cells, G.player1Pos)) {
-              G.cells[
-                boardInfo
-                  .filter((n) => n)
-                  .find((tile) => tile.pos === G.player1Pos).pos
-              ] = playerID;
-            }
-            break;
-        }
-
-        if (IsTileOwned(G.cells, G.player2Pos) === playerID) {
-          G.matchWinner = playerID;
-          G.showStealPopup = true;
-        }
-      }
-
-      if (playerID === "1") {
-        switch (IsTileOwned(G.cells, G.player2Pos)) {
-          case "0":
-            break;
-          case "1":
-            break;
-          default:
-            if (IsTilePurchasable(G.cells, G.player2Pos)) {
-              G.cells[
-                boardInfo
-                  .filter((n) => n)
-                  .find((tile) => tile.pos === G.player2Pos).pos
-              ] = playerID;
-            }
-            break;
-        }
-
-        if (IsTileOwned(G.cells, G.player1Pos) === playerID) {
-          G.matchWinner = playerID;
-          G.showStealPopup = true;
-        }
-      }
-
-      G.showFightPopup = false;
-    },
-
-    stealCharacter: ({ G, ctx, events }, pos) => {
-      if (pos == -1) {
-        G.showStealPopup = false;
-        G.matchWinner = "";
-        return;
-      }
-
-      G.cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos] =
-        G.matchWinner;
-      G.showStealPopup = false;
-      G.matchWinner = "";
-    },
-
-    pickFreeCharacter: ({ G, ctx, events }, pos) => {
-      if (pos == -1) {
-        G.showSelectFreeCharacterPopup = false;
-      }
-
-      G.cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos] =
-        ctx.currentPlayer;
-      G.showSelectFreeCharacterPopup = false;
-
-      events.endTurn();
-    },
+    roll: rollAction,
+    pickWinner: pickWinnerAction,
+    stealCharacter: stealCharacterAction,
+    pickFreeCharacter: pickWinnerAction,
   },
 
   endIf: ({ G, ctx }) => {
@@ -150,57 +36,6 @@ const SmashMonopoly = {
       return { draw: true };
     }
   },
-
-  ai: {
-    enumerate: (G, ctx) => {
-      let moves = [];
-      for (let i = 0; i < 9; i++) {
-        if (G.cells[i] === null) {
-          moves.push({ move: "clickCell", args: [i] });
-        }
-      }
-
-      return moves;
-    },
-  },
 };
 
 export default SmashMonopoly;
-
-function IsVictory(cells) {
-  const positions = [
-    [21, 23, 24], // red
-    [26, 27, 29], // yellow
-    [19, 18, 16], // orange
-    [32, 31, 34], // green
-    [14, 13, 11], // magenta
-    [39, 37], // blue
-    [6, 8, 9], // cyan
-    [1, 3], // brown
-    [28, 12], // pythra
-    [25, 15, 35, 5], // fire emblem stations
-  ];
-
-  const isRowComplete = (row) => {
-    const symbols = row.map((i) => cells[i]);
-    return symbols.every((i) => i !== null && i === symbols[0]);
-  };
-
-  return positions.map(isRowComplete).some((i) => i === true);
-}
-
-function IsDraw(cells) {
-  return cells.filter((c) => c === null).length === 0;
-}
-
-function IsTileOwned(cells, pos) {
-  return cells[boardInfo.filter((n) => n).find((tile) => tile.pos === pos).pos];
-}
-
-function IsTilePurchasable(cells, pos) {
-  return boardInfo.filter((n) => n).find((tile) => tile.pos === pos).canBuy;
-}
-
-function IsTileFreeCharacterSpace(pos) {
-  return pos === 20;
-}
