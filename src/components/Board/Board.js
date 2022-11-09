@@ -8,7 +8,7 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 import WinnerPopup from "../WinnerPopup/WinnerPopup";
 
-const TicTacTocBoard = ({ ctx, G, moves }) => {
+const SmashMonopolyBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
   const handleWinner = (playerID) => moves.pickWinner(playerID);
   const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
@@ -76,4 +76,4 @@ const TicTacTocBoard = ({ ctx, G, moves }) => {
   );
 };
 
-export default TicTacTocBoard;
+export default SmashMonopolyBoard;

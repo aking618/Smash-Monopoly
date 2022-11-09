@@ -1,8 +1,8 @@
 import { INVALID_MOVE } from "boardgame.io/core";
-import { boardInfo } from "./models/boardInfo";
+import { boardInfo } from "../models/boardInfo";
 
-export const TicTacToe = {
-  name: "tic-tac-toe",
+const SmashMonopoly = {
+  name: "smash-monopoly",
   setup: () => ({
     cells: Array(40).fill(null),
     player1Pos: 0,
@@ -164,6 +164,8 @@ export const TicTacToe = {
     },
   },
 };
+
+export default SmashMonopoly;
 
 function IsVictory(cells) {
   const positions = [

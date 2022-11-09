@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Client, Lobby } from "boardgame.io/react";
-import { Local, SocketIO } from "boardgame.io/multiplayer";
-import TicTacTocBoard from "./components/Board/Board";
-import { TicTacToe } from "./Game";
+import React, { useState } from "react";
+import { Client } from "boardgame.io/react";
+import { SocketIO } from "boardgame.io/multiplayer";
+import SmashMonopoly from "./Game/Game";
 import Home from "./components/Home/Home";
+import SmashMonopolyBoard from "./components/Board/Board";
 
-/// Local
-// const TicTacToeClient = Client({
-//   game: TicTacToe,
-//   board: TicTacTocBoard,
-//   multiplayer: Local({
-//     persist: true,
-
-//     storageKey: 'bgio'
-//   }),
-// });
-
-/// Remote
-const TicTacToeClient = Client({
-  game: TicTacToe,
+const SmashMonopolyClient = Client({
+  game: SmashMonopoly,
   debug: true,
-  board: TicTacTocBoard,
+  board: SmashMonopolyBoard,
   multiplayer: SocketIO({ server: "localhost:8000" }),
 });
 
@@ -35,10 +23,10 @@ const App = () => {
           matchID={matchID}
           setMatchID={setMatchID}
           updatePlayerId={(e) => setPlayerID(e)}
-          />
+        />
       ) : (
         <div>
-          <TicTacToeClient playerID={playerID} matchID={matchID} />
+          <SmashMonopolyClient playerID={playerID} matchID={matchID} />
         </div>
       )}
     </div>
