@@ -58,6 +58,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
           return (
             <Tile
               key={index}
+              image={tile.image}
               strip={tile.strip}
               stripColor={tile.stripColor}
               top={tile.top}
@@ -65,6 +66,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
               right={tile.right}
               title={tile.title}
               corner={tile.corner}
+              cornerRotate={tile.cornerRotate}
               player1Pos={tile.pos === G.player1Pos}
               player2Pos={tile.pos === G.player2Pos}
               ownedBy={G.cells[tile.pos]}

@@ -5,6 +5,8 @@ export let boardInfo = [
     strip: false,
     title: "Free Character",
     corner: true,
+    cornerRotate: true,
+    image: "free-parking.png",
   },
 
   {
@@ -21,6 +23,7 @@ export let boardInfo = [
     strip: false,
     title: "Chance",
     top: true,
+    image: "luigi.png",
   },
 
   {
@@ -85,6 +88,9 @@ export let boardInfo = [
     strip: false,
     title: "You're Banned",
     corner: true,
+    cornerRotate: true,
+
+    image: "ban.png",
   },
 
   {
@@ -127,6 +133,7 @@ export let boardInfo = [
     strip: false,
     title: "Community Chest",
     left: true,
+    image: "pacman.png",
   },
   null,
 
@@ -136,6 +143,7 @@ export let boardInfo = [
     strip: false,
     title: "Community Chest",
     right: true,
+    image: "captainfalcon.png",
   },
 
   {
@@ -186,6 +194,7 @@ export let boardInfo = [
     strip: false,
     title: "Chance",
     right: true,
+    image: "hero.png",
   },
 
   {
@@ -218,6 +227,7 @@ export let boardInfo = [
     strip: false,
     title: "Super Tax",
     right: true,
+    image: "mii.png",
   },
 
   {
@@ -241,20 +251,28 @@ export let boardInfo = [
     pos: 10,
     strip: false,
     title: "Just Visiting",
+    cornerRotate: true,
     corner: true,
+    image: "steve.png",
   },
 
   { canBuy: true, pos: 9, stripColor: "cyan", title: "Fox" },
 
   { canBuy: true, pos: 8, stripColor: "cyan", title: "Falco" },
 
-  { canBuy: false, pos: 7, strip: false, title: "Chance" },
+  { canBuy: false, pos: 7, strip: false, title: "Chance", image: "mrgame.png" },
 
   { canBuy: true, pos: 6, stripColor: "cyan", title: "Wolf" },
 
   { canBuy: true, pos: 5, strip: false, title: "Lucina Station" },
 
-  { canBuy: true, pos: 4, strip: false, title: "Income Tax" },
+  {
+    canBuy: true,
+    pos: 4,
+    strip: false,
+    title: "Income Tax",
+    image: "littlemac.png",
+  },
 
   { canBuy: true, pos: 3, stripColor: "brown", title: "Ryu" },
 
@@ -263,6 +281,7 @@ export let boardInfo = [
     pos: 2,
     strip: false,
     title: "Community Chest",
+    image: "kazuya.png",
   },
 
   { canBuy: true, pos: 1, stripColor: "brown", title: "Ken" },
@@ -273,5 +292,6 @@ export let boardInfo = [
     strip: false,
     title: "Collect and Go",
     corner: true,
+    image: "down-left-arrow.png",
   },
 ];

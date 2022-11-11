@@ -2,10 +2,12 @@ import "./styles.css";
 
 const Tile = ({
   strip = true,
+  image = "",
   top = false,
   left = false,
   right = false,
   corner = false,
+  cornerRotate = false,
   stripColor,
   title,
   player1Pos,
@@ -49,7 +51,11 @@ const Tile = ({
         className={`tile-image  ${left ? "image-left" : ""} ${
           right ? "image-right" : ""
         }`}
-        src={`images/${title.replace(/[^A-Z0-9]+/gi, "").toLowerCase()}.png`}
+        src={
+          image === ""
+            ? `images/${title.replace(/[^A-Z0-9]+/gi, "").toLowerCase()}.png`
+            : `images/${image}`
+        }
         alt={title}
       />
       <div
