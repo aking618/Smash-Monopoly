@@ -7,6 +7,7 @@ import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 import WinnerPopup from "../WinnerPopup/WinnerPopup";
+import TaxPopup from "../TaxPopup/TaxPopup";
 
 const SmashMonopolyBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
@@ -48,6 +49,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
+      {G.showTaxPopup || (true && <TaxPopup />)}
       {ctx.gameover && <WinnerPopup ctx={ctx} />}
       <div className="boardContainer">
         {boardInfo.map((tile, index) => {

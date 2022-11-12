@@ -21,17 +21,19 @@ const SmashMonopoly = {
     showSelectFreeCharacterPopup: false,
     banned: "",
     showBannedPopup: false,
+    showTaxPopup: false,
   }),
 
   turn: {
     minMoves: 1,
-    maxMoves: 3,
+    maxMoves: 3, // maybe update this to 4
   },
   moves: {
     roll: rollAction,
     pickWinner: pickWinnerAction,
     stealCharacter: stealCharacterAction,
     pickFreeCharacter: pickFreeCharacterAction,
+    // acceptTaxEffect: acceptTaxEffect
   },
 
   endIf: endCondition,

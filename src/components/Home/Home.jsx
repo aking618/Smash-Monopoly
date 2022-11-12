@@ -8,7 +8,7 @@ const Home = ({ matchID, setMatchID, updatePlayerId }) => {
       <div className="choose-match-wrapper">
         <p className="match-label">Enter the desired match id:</p>
         <div className="matchId-input-group">
-          <span for="matchId">Match ID</span>
+          <span htmlFor="matchId">Match ID</span>
           <input
             className="matchId-input-field"
             id="matchId"
