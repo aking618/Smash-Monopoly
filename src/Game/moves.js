@@ -6,6 +6,8 @@ import {
   IsTileGoToJail,
   IsDraw,
   IsVictory,
+  IsTileTax,
+  AllPopupsHandled,
 } from "./utility";
 
 export function rollAction({ G, ctx, events, random }) {
@@ -14,7 +16,7 @@ export function rollAction({ G, ctx, events, random }) {
 
   switch (ctx.currentPlayer) {
     case "0":
-      G.player1Pos += roll;
+      G.player1Pos += 11;
 
       if (G.player1Pos >= G.cells.length) {
         G.player1Pos -= G.cells.length;
@@ -32,9 +34,13 @@ export function rollAction({ G, ctx, events, random }) {
         G.showBannedPopup = true;
       }
 
+      if (IsTileTax(G.player1Pos)) {
+        G.showTaxPopup = true;
+      }
+
       break;
     case "1":
-      G.player2Pos += roll;
+      G.player2Pos += 22;
 
       if (G.player2Pos >= G.cells.length) {
         G.player2Pos -= G.cells.length;
@@ -51,6 +57,10 @@ export function rollAction({ G, ctx, events, random }) {
         G.showBannedPopup = true;
       }
 
+      if (IsTileTax(G.player2Pos)) {
+        G.showTaxPopup = true;
+      }
+
       // to be adjusted if other action is needed before hand
       G.showFightPopup = true;
       break;
@@ -58,7 +68,7 @@ export function rollAction({ G, ctx, events, random }) {
       break;
   }
 
-  if (!G.showSelectFreeCharacterPopup) {
+  if (AllPopupsHandled(G)) {
     events.endTurn();
   }
 }
@@ -136,12 +146,27 @@ export function pickFreeCharacterAction({ G, ctx, events }, pos) {
     ctx.currentPlayer;
   G.showSelectFreeCharacterPopup = false;
 
-  events.endTurn();
+  if (AllPopupsHandled(G)) {
+    events.endTurn();
+  }
+}
+
+export function acceptTaxEffectAction({ G, ctx, events }) {
+  G.showTaxPopup = false;
+
+  if (ctx.currentPlayer === "1") {
+    events.endTurn();
+  }
 }
 
 export function endCondition({ G, ctx }) {
   if (IsVictory(G.cells)) {
-    // return the true winner
+    G.showFightPopup = false;
+    G.showTaxPopup = false;
+    G.showSelectFreeCharacterPopup = false;
+    G.showStealPopup = false;
+
+    // return the true winner (fix this)
     return { winner: ctx.currentPlayer };
   }
 

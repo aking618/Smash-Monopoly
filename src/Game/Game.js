@@ -3,6 +3,7 @@ import {
   pickWinnerAction,
   rollAction,
   stealCharacterAction,
+  acceptTaxEffectAction,
   endCondition,
 } from "./moves";
 
@@ -26,14 +27,14 @@ const SmashMonopoly = {
 
   turn: {
     minMoves: 1,
-    maxMoves: 3, // maybe update this to 4
+    maxMoves: 4, // maybe update this to 4
   },
   moves: {
     roll: rollAction,
     pickWinner: pickWinnerAction,
     stealCharacter: stealCharacterAction,
     pickFreeCharacter: pickFreeCharacterAction,
-    // acceptTaxEffect: acceptTaxEffect
+    acceptTaxEffect: acceptTaxEffectAction,
   },
 
   endIf: endCondition,

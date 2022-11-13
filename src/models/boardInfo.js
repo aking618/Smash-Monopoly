@@ -222,7 +222,7 @@ export let boardInfo = [
   },
   null,
   {
-    canBuy: true,
+    canBuy: false,
     pos: 38,
     strip: false,
     title: "Super Tax",
@@ -267,7 +267,7 @@ export let boardInfo = [
   { canBuy: true, pos: 5, strip: false, title: "Lucina Station" },
 
   {
-    canBuy: true,
+    canBuy: false,
     pos: 4,
     strip: false,
     title: "Income Tax",

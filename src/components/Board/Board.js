@@ -13,6 +13,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
   const handleWinner = (playerID) => moves.pickWinner(playerID);
   const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
+  const handleAcceptTaxEffect = () => moves.acceptTaxEffect();
 
   return (
     <div className="container">
@@ -40,6 +41,9 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
+      {G.showTaxPopup && (
+        <TaxPopup acceptPopup={() => handleAcceptTaxEffect()} />
+      )}
       {G.showSelectFreeCharacterPopup && (
         <FreeCharacterPopup
           G={G}
@@ -49,7 +53,6 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
           }}
         />
       )}
-      {G.showTaxPopup || (true && <TaxPopup />)}
       {ctx.gameover && <WinnerPopup ctx={ctx} />}
       <div className="boardContainer">
         {boardInfo.map((tile, index) => {

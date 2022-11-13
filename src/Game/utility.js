@@ -41,3 +41,11 @@ export function IsTileFreeCharacterSpace(pos) {
 export function IsTileGoToJail(pos) {
   return pos === 30;
 }
+
+export function IsTileTax(pos) {
+  return pos === 38 || pos === 4;
+}
+
+export function AllPopupsHandled(G) {
+  return !(G.showSelectFreeCharacterPopup || G.showTaxPopup);
+}
