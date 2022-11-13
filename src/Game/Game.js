@@ -4,6 +4,7 @@ import {
   rollAction,
   stealCharacterAction,
   acceptTaxEffectAction,
+  acceptBannedAction,
   endCondition,
 } from "./moves";
 
@@ -34,6 +35,7 @@ const SmashMonopoly = {
     pickWinner: pickWinnerAction,
     stealCharacter: stealCharacterAction,
     pickFreeCharacter: pickFreeCharacterAction,
+    acceptBanned: acceptBannedAction,
     acceptTaxEffect: acceptTaxEffectAction,
   },
 

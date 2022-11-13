@@ -11,12 +11,17 @@ import {
 } from "./utility";
 
 export function rollAction({ G, ctx, events, random }) {
-  let roll = random.D12();
+  if (G.banned === ctx.currentPlayer) {
+    events.endTurn();
+    return;
+  }
+
+  let roll = random.D6() + random.D6();
   G.roll = roll;
 
   switch (ctx.currentPlayer) {
     case "0":
-      G.player1Pos += 11;
+      G.player1Pos += roll;
 
       if (G.player1Pos >= G.cells.length) {
         G.player1Pos -= G.cells.length;
@@ -40,7 +45,7 @@ export function rollAction({ G, ctx, events, random }) {
 
       break;
     case "1":
-      G.player2Pos += 22;
+      G.player2Pos += roll;
 
       if (G.player2Pos >= G.cells.length) {
         G.player2Pos -= G.cells.length;
@@ -121,6 +126,10 @@ export function pickWinnerAction({ G, ctx, events }, playerID) {
     }
   }
 
+  if (G.banned === playerID) {
+    G.banned = false;
+  }
+
   G.showFightPopup = false;
 }
 
@@ -155,6 +164,19 @@ export function acceptTaxEffectAction({ G, ctx, events }) {
   G.showTaxPopup = false;
 
   if (ctx.currentPlayer === "1") {
+    events.endTurn();
+  }
+
+  if (AllPopupsHandled(G)) {
+    events.endTurn();
+  }
+}
+
+export function acceptBannedAction({ G, ctx, events }) {
+  G.showBannedPopup = false;
+  G.banned = ctx.currentPlayer;
+
+  if (AllPopupsHandled(G)) {
     events.endTurn();
   }
 }

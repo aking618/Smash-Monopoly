@@ -12,7 +12,7 @@ const PlayerControls = ({ G, ctx, moves }) => {
         disabled={G.showFightPopup || G.showStealPopup}
         onClick={() => onClick()}
       >
-        ROLL
+        {ctx.currentPlayer === G.banned ? "CONTINUE" : "ROLL"}
       </button>
       <div className="roll-value">{`Roll value: ${G.roll}`}</div>
     </div>

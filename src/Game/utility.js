@@ -47,5 +47,9 @@ export function IsTileTax(pos) {
 }
 
 export function AllPopupsHandled(G) {
-  return !(G.showSelectFreeCharacterPopup || G.showTaxPopup);
+  return !(
+    G.showSelectFreeCharacterPopup ||
+    G.showTaxPopup ||
+    G.showBannedPopup
+  );
 }

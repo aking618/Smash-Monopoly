@@ -8,12 +8,14 @@ import PlayerControls from "../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 import WinnerPopup from "../WinnerPopup/WinnerPopup";
 import TaxPopup from "../TaxPopup/TaxPopup";
+import BannedPopup from "../BannedPopup/BannedPopup";
 
 const SmashMonopolyBoard = ({ ctx, G, moves }) => {
   const handleStealCharacter = (pos) => moves.stealCharacter(pos);
   const handleWinner = (playerID) => moves.pickWinner(playerID);
   const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
   const handleAcceptTaxEffect = () => moves.acceptTaxEffect();
+  const handleAcceptBanned = () => moves.acceptBanned();
 
   return (
     <div className="container">
@@ -52,6 +54,9 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
             handlePickFreeCharacter(pos);
           }}
         />
+      )}
+      {G.showBannedPopup && (
+        <BannedPopup ctx={ctx} acceptPopup={() => handleAcceptBanned()} />
       )}
       {ctx.gameover && <WinnerPopup ctx={ctx} />}
       <div className="boardContainer">
