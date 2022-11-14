@@ -21,6 +21,7 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
     <div className="container">
       {G.showFightPopup && (
         <FightPopup
+          G={G}
           p1Fighter={boardInfo
             .filter((n) => n)
             .find((tile) => tile.pos === G.player1Pos)}

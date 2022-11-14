@@ -12,6 +12,9 @@ import {
 
 export function rollAction({ G, ctx, events, random }) {
   if (G.banned === ctx.currentPlayer) {
+    if (ctx.currentPlayer === "1") {
+      G.showFightPopup = true;
+    }
     events.endTurn();
     return;
   }
