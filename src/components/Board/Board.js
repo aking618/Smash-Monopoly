@@ -7,9 +7,12 @@ import StealCharacterPopup from "../StealCharacterPopup/StealCharacterPopup";
 import PlayerControls from "../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 import WinnerPopup from "../WinnerPopup/WinnerPopup";
-import TaxPopup from "../TaxPopup/TaxPopup";
 import BannedPopup from "../BannedPopup/BannedPopup";
+<<<<<<< HEAD
 import { AllPopupsHandled } from "../../Game/utility";
+=======
+import EffectPopup from "../TaxPopup/TaxPopup";
+>>>>>>> 87222c6 (AK : Started generalizing the taxpopup)
 
 const SmashMonopolyBoard = ({ ctx, G, moves }) => {
     const handleStealCharacter = (pos) => moves.stealCharacter(pos);
@@ -20,7 +23,11 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
 
     return (
         <div className="container">
+<<<<<<< HEAD
             {G.showFightPopup && AllPopupsHandled(G) && (
+=======
+            {G.showFightPopup && (
+>>>>>>> 87222c6 (AK : Started generalizing the taxpopup)
                 <FightPopup
                     G={G}
                     p1Fighter={boardInfo
@@ -46,7 +53,13 @@ const SmashMonopolyBoard = ({ ctx, G, moves }) => {
                 />
             )}
             {G.showTaxPopup && (
+<<<<<<< HEAD
                 <TaxPopup acceptPopup={() => handleAcceptTaxEffect()} />
+=======
+                // add state for community chest and chance
+                // pass each of them as props to decide the text and random effect
+                <EffectPopup acceptPopup={() => handleAcceptTaxEffect()} />
+>>>>>>> 87222c6 (AK : Started generalizing the taxpopup)
             )}
             {G.showSelectFreeCharacterPopup && (
                 <FreeCharacterPopup
