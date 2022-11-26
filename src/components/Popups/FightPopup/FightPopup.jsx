@@ -1,5 +1,5 @@
 import React from "react";
-import Tile from "../Tile/Tile";
+import Tile from "../../Tile/Tile";
 import "./styles.css";
 
 const FightPopup = ({ G, p1Fighter, p2Fighter, handleWinner }) => {

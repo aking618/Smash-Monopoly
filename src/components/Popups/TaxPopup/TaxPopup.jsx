@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { taxEffects } from "../../models/taxEffects";
+import { taxEffects } from "../../../models/taxEffects";
 import "./styles.css";
 
 const EffectPopup = ({ acceptPopup }) => {
