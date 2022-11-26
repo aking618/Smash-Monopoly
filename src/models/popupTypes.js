@@ -1,0 +1,11 @@
+export const POPUP_TYPES = {
+    FIGHT: "FIGHT",
+    STEAL: "STEAL",
+    TAX: "TAX",
+    FREE_CHARACTER: "FREE_CHARACTER",
+    BANNED: "BANNED",
+    WINNER: "WINNER",
+    COMMUNITY_CHEST: "COMMUNITY_CHEST",
+    CHANCE: "CHANCE",
+    NONE: "NONE",
+};

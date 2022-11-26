@@ -5,7 +5,7 @@ import PlayerControls from "../../PlayerControls/PlayerControls";
 import FreeCharacterPopup from "../FreeCharacterPopup/FreeCharacterPopup";
 import WinnerPopup from "../WinnerPopup/WinnerPopup";
 import BannedPopup from "../BannedPopup/BannedPopup";
-import EffectPopup from "../TaxPopup/TaxPopup";
+import EffectPopup from "../EffectPopup/EffectPopup";
 import { AllPopupsHandled } from "../../../Game/utility";
 import { boardInfo } from "../../../models/boardInfo";
 
@@ -15,7 +15,7 @@ const PopupWrapper = ({ G, ctx, moves }) => {
     const handleStealCharacter = (pos) => moves.stealCharacter(pos);
     const handleWinner = (playerID) => moves.pickWinner(playerID);
     const handlePickFreeCharacter = (pos) => moves.pickFreeCharacter(pos);
-    const handleAcceptTaxEffect = () => moves.acceptTaxEffect();
+    const handleAcceptTaxEffect = () => moves.acceptEffect();
     const handleAcceptBanned = () => moves.acceptBanned();
 
     return (
@@ -45,10 +45,11 @@ const PopupWrapper = ({ G, ctx, moves }) => {
                     }}
                 />
             )}
-            {G.showTaxPopup && (
-                // add state for community chest and chance
-                // pass each of them as props to decide the text and random effect
-                <EffectPopup acceptPopup={() => handleAcceptTaxEffect()} />
+            {G.showEffectPopup && (
+                <EffectPopup
+                    popupType={G.effectType}
+                    action={() => handleAcceptTaxEffect()}
+                />
             )}
             {G.showSelectFreeCharacterPopup && (
                 <FreeCharacterPopup
